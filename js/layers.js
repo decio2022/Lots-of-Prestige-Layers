@@ -19,8 +19,10 @@ addLayer("l", {
     type: "none", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     row: "side", // Row the layer is in on the tree (0 is the first row)
     update(diff){
-        player.level.levelReq = levelScaling.pow(player.level.levels.sub(1)).times(10)
+        player.level.levelReq = player.level.levelScaling.pow(player.level.levels.sub(1)).times(10)
         if (player.points.gte(player.level.levelReq)) player.level.level.add(player.level.add(1))
     },
+
+    tooltip(){ return "You have "+player.level.level+", and "+player.points+" Total XP"},
     layerShown(){return true}
 })
